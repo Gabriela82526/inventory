@@ -1,0 +1,16 @@
+<nz-card>
+    <div class="clearfix">
+        <nz-upload
+          [nzAction]="serverURL + '/upload-file'"
+          nzListType="picture"
+          [(nzFileList)]="fileList"
+          [nzShowButton]="fileList.length < 3"
+          (nzChange)="handleChange($event)"
+        >
+          <button nz-button>
+            <span nz-icon nzType="upload"></span>
+            Upload
+          </button>
+        </nz-upload>
+    </div>
+</nz-card>

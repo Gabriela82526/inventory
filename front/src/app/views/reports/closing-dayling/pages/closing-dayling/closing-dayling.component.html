@@ -1,0 +1,119 @@
+<nz-page-header class="site-page-header" nzBackIcon>
+  <nz-page-header-title>{{
+    "closingDayling.title" | translate
+  }}</nz-page-header-title>
+</nz-page-header>
+<div class="container-fluid">
+  <form nz-form [nzLayout]="'vertical'">
+    <div class="row">
+      <div class="col-12 col-sm-6">
+        <app-filter-date
+          [date]="date"
+          (changeDate)="changeDate($event)"
+        ></app-filter-date>
+      </div>
+      <div class="col-12 col-sm-6 d-flex align-items-end pb-3">
+        <a
+          nz-button
+          nzType="default"
+          nz-tooltip="Generar reporte"
+          (click)="downloadReport()"
+        >
+          <i nz-icon nzType="file-pdf" nzTheme="outline"></i>
+        </a>
+      </div>
+    </div>
+  </form>
+  <nz-spin [nzSpinning]="isSpinning">
+    <div class="row">
+      <div class="col-md-6 col-12">
+        <app-detail-card-report
+          [value]="balanceClosing?.general"
+          icon="sliders"
+          [title]="'closingDayling.balance' | translate"
+          [description]="'closingDayling.balanceDescription' | translate"
+        ></app-detail-card-report>
+      </div>
+      <div class="col-md-6 col-12">
+        <app-detail-card-report
+          [value]="balanceClosing?.revenue"
+          icon="rise"
+          [title]="'closingDayling.revenue' | translate"
+          [description]="'closingDayling.revenueDescription' | translate"
+        ></app-detail-card-report>
+      </div>
+      <div class="col-md-6 col-12">
+        <app-detail-card-report
+          [value]="salesClosing?.valueDay"
+          icon="dollar-circle"
+          [title]="'closingDayling.sales' | translate"
+          [description]="'closingDayling.salesDescription' | translate"
+          [hasDetail]="true"
+          [type]="'simple'"
+          [listPrices]="salesClosing"
+          [prefix]="'closingDayling.sales' | translate"
+        ></app-detail-card-report>
+      </div>
+      <!-- <div class="col-md-6 col-12">
+        <app-detail-card-report
+          [value]="invoicesClosing?.valueDay"
+          icon="dollar-circle"
+          [title]="'closingDayling.invoices' | translate"
+          [description]="'closingDayling.invoicesDescription' | translate"
+          [hasDetail]="true"
+          [type]="'simple'"
+          [listPrices]="invoicesClosing"
+          [prefix]="'closingDayling.invoices' | translate"
+        ></app-detail-card-report>
+      </div> -->
+      <div class="col-md-6 col-12">
+        <app-detail-card-report
+          [value]="bailsClosing?.valueDay"
+          icon="dollar-circle"
+          [title]="
+            ('closingDayling.bails' | translate) +
+            ' ' +
+            ('closingDayling.sales' | translate | lowercase)
+          "
+          [description]="'closingDayling.bailsDescription' | translate"
+          [hasDetail]="true"
+          [type]="'simple'"
+          [listPrices]="bailsClosing"
+          [prefix]="'closingDayling.bails' | translate"
+        ></app-detail-card-report>
+      </div>
+      <!-- <div class="col-md-6 col-12">
+        <app-detail-card-report
+          [value]="bailsInvoicesClosing?.valueDay"
+          icon="dollar-circle"
+          [title]="
+            ('closingDayling.bails' | translate) +
+            ' ' +
+            ('closingDayling.invoices' | translate | lowercase)
+          "
+          [description]="'closingDayling.bailsInvoicesDescription' | translate"
+          [hasDetail]="true"
+          [type]="'simple'"
+          [listPrices]="bailsInvoicesClosing"
+          [prefix]="'closingDayling.bails' | translate"
+        ></app-detail-card-report>
+      </div> -->
+      <div class="col-md-6 col-12">
+        <app-detail-card-report
+          [value]="expensesClosing?.valueDay"
+          icon="credit-card"
+          [title]="'closingDayling.expenses' | translate"
+          [description]="'closingDayling.expensesDescription' | translate"
+        ></app-detail-card-report>
+      </div>
+      <!-- <div class="col-md-6 col-12">
+        <app-detail-card-report
+          [value]="shoppingsClosing?.value"
+          icon="shopping-cart"
+          [title]="'closingDayling.shoppings' | translate"
+          [description]="'closingDayling.shoppingsDescription' | translate"
+        ></app-detail-card-report>
+      </div> -->
+    </div>
+  </nz-spin>
+</div>

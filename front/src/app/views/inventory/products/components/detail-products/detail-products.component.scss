@@ -1,0 +1,24 @@
+::ng-deep{
+    .py__2{
+        .ant-card-body{
+            padding: 2rem 1.5rem !important;
+        }
+    }
+    .py__0{
+        .ant-card-body{
+            padding: 1.5rem 1.5rem .5rem !important;
+        }
+    }
+}
+.image-container {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+    gap: 20px;
+}
+
+.img-fluid {
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: cover;
+}
